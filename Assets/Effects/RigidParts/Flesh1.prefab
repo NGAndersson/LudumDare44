@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 8525099619476024359}
   - component: {fileID: 7235618914939443691}
   - component: {fileID: 38535788255991062}
-  m_Layer: 0
+  - component: {fileID: -5633189941694529662}
+  m_Layer: 11
   m_Name: Flesh1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,3 +214,16 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!135 &-5633189941694529662
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3907073816378472553}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.043986615
+  m_Center: {x: 0, y: 0, z: 0}

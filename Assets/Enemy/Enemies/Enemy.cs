@@ -37,6 +37,8 @@ public abstract class Enemy : MonoBehaviour
         Assert.IsNotNull(rigidbody);
         IgnoreCollisions(true);
 
+        float randomSize = UnityEngine.Random.Range(0.8f, 1.2f);
+        transform.localScale = new Vector3(randomSize, randomSize, randomSize);
         maxVelocity = UnityEngine.Random.Range(maxVelocityRange.x, maxVelocityRange.x + 2);
     }
 

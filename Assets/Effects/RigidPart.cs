@@ -32,7 +32,24 @@ public class RigidPart : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         rBody.isKinematic = true;
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(4);
+
+        Collider[] cols = GetComponentsInChildren<Collider>();
+
+        for (int i = 0; i < cols.Length; i++)
+        {
+            cols[i].enabled = false;
+        }
+
+        float timer = Time.time + 3f;
+
+        while(timer > Time.time)
+        {
+            this.transform.position = this.transform.position + Vector3.down * Time.deltaTime * 10;
+            yield return new WaitForEndOfFrame();
+        }
+
+        yield return new WaitForSeconds(3f);
         Destroy(this.gameObject);
     }
 }
