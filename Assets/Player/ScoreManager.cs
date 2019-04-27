@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public Text scoreText;
+    public TMPro.TextMeshProUGUI scoreText;
     public int score = 0;
 
     // Start is called before the first frame update
