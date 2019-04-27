@@ -67,10 +67,14 @@ public class ChargeManager : MonoBehaviour
 
     private class ActionChecker
     {
-        private float timer = 0.0f;
+        private float spinTimer = 0.0f;
+        private float dashTimer = 0.0f;
+        public float dashTimeLimit = 0.4f;
         public float spinWindupTime = 0.1f;
         public float angleChangePerSecondRequirement = 540f;
-        Vector3 prevAngle = Vector3.zero;
+        public float dashDistanceChangeRequirement = 3f;
+        Vector3 prevDirection = Vector3.zero;
+        float prevDistance = 0;
 
         private PlayerController player;
         private GameObject trailRenderer;
@@ -85,25 +89,36 @@ public class ChargeManager : MonoBehaviour
 
             Ray r = player.Camera.ScreenPointToRay(Input.mousePosition);
             player.PositionPlane.Raycast(r, out float distanceToPoint);
-            Vector3 angle = r.GetPoint(distanceToPoint) - player.transform.position;
+            Vector3 direction = r.GetPoint(distanceToPoint) - player.transform.position;
 
             // Check increase since previous update.
-            float angleChange = Vector3.Angle(angle, prevAngle);
-            prevAngle = angle;
+            float angleChange = Vector3.Angle(direction, prevDirection);
+            prevDirection = direction;
+            
+            float distanceChange = direction.magnitude - prevDistance;
+            prevDistance = distanceChange;
 
+            // Check spin.
             if (angleChange < angleChangePerSecondRequirement * Time.deltaTime)
             {
-                timer = 0.0f;
+                spinTimer = 0.0f;
             }
             else
             {
-                timer += Time.deltaTime;
-                if (timer > spinWindupTime)
+                spinTimer += Time.deltaTime;
+                if (spinTimer > spinWindupTime)
                 {
                     player.SetState(PlayerController.State.Spinning);
                     trailRenderer.SetActive(false);
                     return false;
                 }
+            }
+
+            // Check dash.
+
+            if (distanceChange < dashDistanceChangeRequirement * Time.deltaTime)
+            {
+                dashTimer = 0.0f;
             }
 
             trailRenderer.transform.position = r.GetPoint(distanceToPoint-1.0f);
@@ -113,7 +128,8 @@ public class ChargeManager : MonoBehaviour
         public void Reset(PlayerController player, GameObject trailRendererPrefab)
         {
             this.player = player;
-            timer = 0.0f;
+            spinTimer = 0.0f;
+            dashTimer = 0.0f;
             trailRenderer = Instantiate(trailRendererPrefab);
             trailRenderer.SetActive(true);
         }

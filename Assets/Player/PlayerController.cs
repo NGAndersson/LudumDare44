@@ -161,4 +161,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Die()
+    {
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Enemy")
+        {
+            switch (state)
+            {
+                case State.Normal:
+                    {
+                        Die();
+                        break;
+                    }
+                case State.Spinning:
+                    {
+                        collision.gameObject.GetComponent<Enemy>().Die();
+                        break;
+                    }
+            }
+        }
+    }
 }

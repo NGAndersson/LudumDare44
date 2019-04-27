@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8423197877014047205}
   m_Layer: 9
   m_Name: EnemyType1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,12 +147,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7492374853661950991, guid: d1d763c9f763135498e37ae5564f8843,
+    - target: {fileID: 4981104838262513592, guid: d1d763c9f763135498e37ae5564f8843,
         type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 4981104838262513592, guid: d1d763c9f763135498e37ae5564f8843,
+    - target: {fileID: 7492374853661950991, guid: d1d763c9f763135498e37ae5564f8843,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -177,6 +177,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4420863354145003117, guid: d1d763c9f763135498e37ae5564f8843,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4756315684116008809, guid: d1d763c9f763135498e37ae5564f8843,
         type: 3}
       propertyPath: m_Layer
@@ -192,27 +197,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 4420863354145003117, guid: d1d763c9f763135498e37ae5564f8843,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 498394641689247951, guid: d1d763c9f763135498e37ae5564f8843,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 7198537532658983304, guid: d1d763c9f763135498e37ae5564f8843,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5635214315297888718, guid: d1d763c9f763135498e37ae5564f8843,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2559341764865869593, guid: d1d763c9f763135498e37ae5564f8843,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -222,12 +207,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 4688007562110478620, guid: d1d763c9f763135498e37ae5564f8843,
+    - target: {fileID: 2559341764865869593, guid: d1d763c9f763135498e37ae5564f8843,
         type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 3041765729397576209, guid: d1d763c9f763135498e37ae5564f8843,
+    - target: {fileID: 5635214315297888718, guid: d1d763c9f763135498e37ae5564f8843,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7198537532658983304, guid: d1d763c9f763135498e37ae5564f8843,
         type: 3}
       propertyPath: m_Layer
       value: 9
@@ -242,17 +232,27 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 3041765729397576209, guid: d1d763c9f763135498e37ae5564f8843,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688007562110478620, guid: d1d763c9f763135498e37ae5564f8843,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 8360188864338164959, guid: d1d763c9f763135498e37ae5564f8843,
         type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 4679927475615501907, guid: d1d763c9f763135498e37ae5564f8843,
+    - target: {fileID: 2205012964474169078, guid: d1d763c9f763135498e37ae5564f8843,
         type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 2205012964474169078, guid: d1d763c9f763135498e37ae5564f8843,
+    - target: {fileID: 4679927475615501907, guid: d1d763c9f763135498e37ae5564f8843,
         type: 3}
       propertyPath: m_Layer
       value: 9

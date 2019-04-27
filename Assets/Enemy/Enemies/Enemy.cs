@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -36,5 +37,10 @@ public class Enemy : MonoBehaviour
         direction = direction.ResetY();
         direction.Normalize();
         transform.SetPositionAndRotation(transform.position + (direction * speed * Time.deltaTime), transform.rotation);
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 }
