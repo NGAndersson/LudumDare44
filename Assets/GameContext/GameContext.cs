@@ -37,13 +37,13 @@ public class GameContext : MonoBehaviour
 
     private IEnumerator StartNewGameInternal()
     {
-        TogglePause(false);
-        yield return new WaitForSeconds(0.1f);
         Utilities.Scene.findExactlyOne<EnemySpawnerController>().Reset();
         GameObject.FindWithTag("Player").GetComponentInChildren<PlayerController>().Reset();
         menuEvents.ToggleMenuHide();
         EnemyWaves enemyWaves = Utilities.Scene.findExactlyOne<EnemyWaves>();
         enemyWaves.Reset();
         enemyWaves.ForceNextWave();
+        TogglePause(false);
+        yield break;
     }
 }
