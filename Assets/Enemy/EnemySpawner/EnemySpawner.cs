@@ -7,37 +7,32 @@ public class EnemySpawner : MonoBehaviour
     public GameObject origin;
     public GameObject direction;
 
-    Queue<Enemy> queuedEnemeis = new Queue<Enemy>();
+    List<Enemy> enemyList = new List<Enemy>();
     Enemy currentEnemy = null;
 
-    public GameObject QueueEnemy(GameObject enemyPrefab, PlayerController playerController, EnemySpawner enemySpawner)
+    public GameObject QueueEnemy(GameObject enemyPrefab, EnemySpawner enemySpawner)
     {
         GameObject enemyGameObject = Instantiate(enemyPrefab, GetLastEmptyPosition(), Quaternion.identity);
         Enemy enemy = enemyGameObject.GetComponent<Enemy>();
-        enemy.Initialize(playerController, playerController.GetComponentInParent<Rigidbody>()); // TODO prefetch Rigidbody
         enemy.SetTarget(direction.transform);
-        queuedEnemeis.Enqueue(enemy);
+        enemyList.Add(enemy);
         return enemyGameObject;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        if (queuedEnemeis.Count == 0) // If there's nothing queued, reset current and leave.
+        for (int i = 0; i< enemyList.Count; )
         {
-            currentEnemy = null;
-            return;
-        }
-
-        if (currentEnemy == null) // If There's no current emeny, peek the first one.
-        {
-            currentEnemy = queuedEnemeis.Peek();
-        }
-
-        float distance = (currentEnemy.transform.position - direction.transform.position).magnitude;
-        if (distance <= 2f)
-        {
-            currentEnemy = queuedEnemeis.Dequeue();
-            currentEnemy.ReleaseFromSpawner();
+            float distance = (enemyList[i].transform.position - direction.transform.position).magnitude;
+            if (distance <= 2f)
+            {
+                enemyList[i].ReleaseFromSpawner();
+                enemyList.RemoveAt(i);
+            }
+            else
+            {
+                ++i;
+            }
         }
     }
     
@@ -45,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
     {
         float sizeOfEnemy = 3; // TODO
         Vector3 direction = (origin.transform.position - transform.position).normalized;
-        Vector3 spawnPosition = origin.transform.position + (direction * sizeOfEnemy * queuedEnemeis.Count);
+        Vector3 spawnPosition = origin.transform.position + (direction * sizeOfEnemy * enemyList.Count);
         return spawnPosition;
     }
 }
