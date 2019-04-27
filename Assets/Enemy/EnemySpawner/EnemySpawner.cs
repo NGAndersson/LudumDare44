@@ -9,6 +9,13 @@ public class EnemySpawner : MonoBehaviour
 
     List<Enemy> enemyList = new List<Enemy>();
 
+    void Start()
+    {
+        origin.SetActive(false);
+        direction.SetActive(false);
+        GetComponent<MeshRenderer>().enabled = false;
+    }
+
     public GameObject QueueEnemy(GameObject enemyPrefab, EnemySpawner enemySpawner)
     {
         GameObject enemyGameObject = Instantiate(enemyPrefab, GetLastEmptyPosition(), Quaternion.identity);
