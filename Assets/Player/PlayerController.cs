@@ -204,6 +204,7 @@ public class PlayerController : MonoBehaviour
         //acceleration = 1.0f;
         //deacceleration = -2.0f;
         actualDirection = new Vector3(1f, 0f, 0f);
+        totalCollisionTime = 0;
     }
 
     private void OnTriggerEnter(Collider collision)
