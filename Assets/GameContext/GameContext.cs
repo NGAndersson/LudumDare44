@@ -8,10 +8,8 @@ public class GameContext : MonoBehaviour
     public static bool isGamePaused = true;
 
     public List<GameObject> gameGlobalObjects;
-    private MenuEvents menuEvents;
-    private EnemyWaves enemyWaves;
 
-    private void Awake()
+    void Awake()
     {
         DontDestroyOnLoad(this);
         foreach (GameObject gameObject in gameGlobalObjects)
@@ -20,18 +18,12 @@ public class GameContext : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        menuEvents = Utilities.Scene.findExactlyOne<MenuEvents>();
-        enemyWaves = Utilities.Scene.findExactlyOne<EnemyWaves>();
-    }
-
-    private void Start()
+    void Start()
     {
         if (Application.isEditor)
         {
             TogglePause();
-            StartNewGame();
+            StartNewGameDelayed();
         }
     }
 
@@ -41,9 +33,15 @@ public class GameContext : MonoBehaviour
         Time.timeScale = (isGamePaused) ? 0 : 1;
     }
 
-    public void StartNewGame()
+    public void StartNewGameDelayed()
     {
-        print("Start new game");
+        StartCoroutine("StartNewGame");
+    }
+
+    private IEnumerator StartNewGame()
+    {
+        EnemyWaves enemyWaves = Utilities.Scene.findExactlyOne<EnemyWaves>();
+        yield return new WaitForSeconds(2f);
         enemyWaves.Reset();
         enemyWaves.ForceNextWave();
     }
