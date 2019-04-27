@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Utilities
+public static class Utilities
 {
-    public class Scene
+    public static class Scene
     {
         static public T findExactlyOne<T>() where T : UnityEngine.Object
         {
@@ -13,5 +13,11 @@ public class Utilities
             Assert.AreEqual(1, objects.Length, "There were an unexpected number of " + typeof(T).Name + ". Found: "+ objects.Length);
             return objects[0];
         }
+    }
+
+    public static Vector3 ResetY(this Vector3 vector)
+    {
+        vector.y = 0;
+        return vector;
     }
 }
