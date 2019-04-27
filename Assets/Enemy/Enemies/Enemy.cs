@@ -13,7 +13,7 @@ public abstract class Enemy : MonoBehaviour
 
     const float MaxSpeed = 500f;
     const float MinSpeed = 1000f;
-    float speed;
+    float speed = MinSpeed;
 
     public abstract int PointValue { get; }
 
@@ -23,11 +23,11 @@ public abstract class Enemy : MonoBehaviour
         targetPlayerRigidbody = playerRigidbody;
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetPlayerRigidbody.rotation, 1.0f);
         IgnoreCollisions(true);
-        speed = Random.Range(MinSpeed, MaxSpeed);
     }
 
     void Start()
     {
+        speed = UnityEngine.Random.Range(MinSpeed, MaxSpeed);
         rigidbody = GetComponentInParent<Rigidbody>();
         Assert.IsNotNull(rigidbody);
     }
@@ -62,6 +62,7 @@ public abstract class Enemy : MonoBehaviour
     void IgnoreCollisions(bool ignore)
     {
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Rink"), LayerMask.NameToLayer("Enemy"), ignore);
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Rink"), ignore);
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Enemy"), ignore);
     }
 }
