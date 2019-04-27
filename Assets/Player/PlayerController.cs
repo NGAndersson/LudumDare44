@@ -5,13 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 0.0f;
-    public float maxSpeed = 10.0f;
-    public float minSpeed = 4.0f;
+    public float maxSpeed = 45f;
+    public float minSpeed = 10.0f;
 
     public float turnSpeed = 6.0f;
     public float spinsPerSecond = 3.0f;
 
-    public float acceleration = 1.0f;
+    public float acceleration = 1900f;
     public float deacceleration = 2.0f;
 
     public State state;
@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
         // Set velocity.
         rbody.velocity = actualDirection * moveSpeed;
-        visuals.GetComponent<Animator>().SetFloat("MovementSpeed", (moveSpeed - minSpeed) / (maxSpeed - minSpeed));
+        visuals.GetComponent<Animator>().SetFloat("MovementSpeed", 2 - (moveSpeed - minSpeed) / (maxSpeed - minSpeed));
 
         positionPlane.SetNormalAndPosition(Vector3.up, transform.position); // Update position plane, normal can be changed in case of slopes in the future.
         Vector3 aimVector = GetAimVector();
@@ -97,7 +97,10 @@ public class PlayerController : MonoBehaviour
         {
             case State.Normal:
                 {
-                    moveSpeed = Mathf.Min(moveSpeed + acceleration * Time.deltaTime, maxSpeed);
+                    float speedPercentage = 1 - (moveSpeed / maxSpeed);
+                    float currAcceleration = acceleration * speedPercentage;
+
+                    moveSpeed = Mathf.Min(moveSpeed + currAcceleration * Time.deltaTime, maxSpeed);
                     break;
                 }
             case State.Spinning:
@@ -119,8 +122,8 @@ public class PlayerController : MonoBehaviour
                     state = State.Normal;
                     visuals.GetComponent<Animator>().SetTrigger("Skate");
                     turnSpeed = 6.0f;
-                    acceleration = 1.0f;
-                    deacceleration = -2.0f;
+                    //acceleration = 1.0f;
+                    //deacceleration = -2.0f;
                     break;
                 }
             case State.Spinning:
@@ -129,8 +132,8 @@ public class PlayerController : MonoBehaviour
                     chargeManager.ActivateSpin();
                     visuals.GetComponent<Animator>().SetTrigger("Spin");
                     turnSpeed = 3.0f;
-                    acceleration = 1.0f;
-                    deacceleration = -2.0f;
+                    //acceleration = 1.0f;
+                    //deacceleration = -2.0f;
                     break;
                 }
         }
@@ -167,7 +170,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.transform.tag == "Enemy")
         {

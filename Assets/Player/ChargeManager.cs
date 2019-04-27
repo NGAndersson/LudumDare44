@@ -28,14 +28,14 @@ public class ChargeManager : MonoBehaviour
         // Set inner circle.
         chargePercentage = (player.moveSpeed - player.minSpeed) / (player.maxSpeed - player.minSpeed);
         innerCircle.localScale = new Vector3(chargePercentage, chargePercentage);
-        if (chargePercentage == 1 && !glowingCircle && player.state == PlayerController.State.Normal)
+        if (chargePercentage > 0.7f && !glowingCircle && player.state == PlayerController.State.Normal)
         {
             innerCircle.GetComponent<Image>().color = new Color(255, 255, 0, 135); // Yellow.
             glowingCircle = true;
         }
 
         // Check for inputs.
-        if (!doingAction && chargePercentage == 1 && player.state == PlayerController.State.Normal && Input.GetMouseButtonDown(0))
+        if (!doingAction && glowingCircle && player.state == PlayerController.State.Normal && Input.GetMouseButtonDown(0))
         {
             Ray r = player.Camera.ScreenPointToRay(Input.mousePosition);
             player.PositionPlane.Raycast(r, out float distanceToPoint);

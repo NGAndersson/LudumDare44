@@ -19,6 +19,10 @@ public abstract class Enemy : MonoBehaviour
     const float MinSpeed = 800f;
     float speed = MinSpeed;
 
+    Vector2 maxVelocityRange = new Vector2(2, 18);
+    float maxVelocity;
+    float increaseVelTimer = 0.0f;
+
     public abstract int PointValue { get; }
 
     public void Initialize()
@@ -32,11 +36,24 @@ public abstract class Enemy : MonoBehaviour
         boxCollider = GetComponentInParent<BoxCollider>();
         Assert.IsNotNull(rigidbody);
         IgnoreCollisions(true);
+
+        maxVelocity = UnityEngine.Random.Range(maxVelocityRange.x, maxVelocityRange.x + 2);
     }
 
     void Update()
     {
+        if (increaseVelTimer < Time.time && maxVelocity < maxVelocityRange.y)
+        {
+            increaseVelTimer += 6f;
+            maxVelocity++;
+        }
+
         MoveTowardsTarget();
+
+        if (rigidbody.velocity.magnitude > maxVelocity)
+        {
+            rigidbody.velocity = rigidbody.velocity.normalized * maxVelocity;
+        }
     }
 
     void MoveTowardsTarget()
