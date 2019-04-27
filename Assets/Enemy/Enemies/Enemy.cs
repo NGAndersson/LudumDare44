@@ -6,6 +6,8 @@ using UnityEngine.Assertions;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public SpawnEffect spawnEffect;
+
     new Rigidbody rigidbody;
     PlayerController targetPlayer;
     Rigidbody targetPlayerRigidbody;
@@ -43,7 +45,8 @@ public abstract class Enemy : MonoBehaviour
         direction = direction.ResetY();
         direction.Normalize();
         rigidbody.AddForce(direction * speed * Time.deltaTime);
-        // TODO rotate towards player
+        
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rigidbody.velocity.normalized), Time.deltaTime * 5f);
     }
 
     public abstract void Die(Vector3 deathVector);
@@ -64,6 +67,14 @@ public abstract class Enemy : MonoBehaviour
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Rink"), LayerMask.NameToLayer("Enemy"), ignore);
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Rink"), ignore);
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Enemy"), ignore);
+    }
+
+    public virtual void DeathEffect()
+    {
+        GameObject go = Instantiate(spawnEffect.gameObject);
+        go.transform.position = transform.position;
+
+        go.GetComponent<SpawnEffect>().Spawn(Vector3.forward, 10);
     }
 }
 
