@@ -71,6 +71,10 @@ public class PlayerController : MonoBehaviour
     {
         if (GameContext.isGamePaused) { return; }
 
+        // Spin debug
+        if (Input.GetKeyDown(KeyCode.S))
+            SetState(State.Spinning);
+
         // Set velocity.
         rbody.velocity = actualDirection * moveSpeed;
         visuals.GetComponent<Animator>().SetFloat("MovementSpeed", (moveSpeed - minSpeed) / (maxSpeed - minSpeed));
