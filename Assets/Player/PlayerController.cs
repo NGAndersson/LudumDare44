@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameContext.isGamePaused) { return; }
+
         if (Input.GetButton("Fire1") || Input.touches.Length > 0)
         {
             rbody.AddForce(transform.forward * 10, ForceMode.Acceleration);
