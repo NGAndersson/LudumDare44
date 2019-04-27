@@ -3,7 +3,17 @@ guid: 20ae8605902a1ec4a81f771036963713
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HockeyGroundMat
+    second: {fileID: 2100000, guid: fa3fb8767e986e442ac755e9eaf0fa2b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HockeyLevelMat
+    second: {fileID: 2100000, guid: e345399689713cb4daca9ff5699efbe1, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -31,7 +41,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 0
+    isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
