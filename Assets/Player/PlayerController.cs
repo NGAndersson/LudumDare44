@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rbody;
 
+    private MenuEvents menu;
+
     [SerializeField]
     private ChargeManager chargeManager = null;
 
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        menu = Utilities.Scene.findExactlyOne<MenuEvents>();
         originPosition = transform.position;
         originRotation = transform.rotation;
 
@@ -174,7 +177,7 @@ public class PlayerController : MonoBehaviour
 
     private void Die(Vector3 deathVector)
     {
-
+        menu.ToggleMenuShow();
     }
 
     public void Reset()
