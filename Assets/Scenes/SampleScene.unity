@@ -5008,6 +5008,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: MainCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 7423544177717153426, guid: 65c29d6fae3b69b4890348a6da428d93,
+        type: 3}
+      propertyPath: shakeDuration
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65c29d6fae3b69b4890348a6da428d93, type: 3}
 --- !u!1 &7714881463210719368

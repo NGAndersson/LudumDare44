@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
     bool alreadyIncludedCollision = false;
     const float TotalCollisionTimeThreshold = 0.7f;
     float totalCollisionTime = 0f;
+    const float CollisionFreeTimeThreshold = 0.5f;
+    float collisionFreeTime = 0f;
 
     public enum State
     {
@@ -205,6 +207,7 @@ public class PlayerController : MonoBehaviour
         //deacceleration = -2.0f;
         actualDirection = new Vector3(1f, 0f, 0f);
         totalCollisionTime = 0;
+        collisionFreeTime = 0;
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -226,20 +229,24 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (alreadyIncludedCollision == false && collision.transform.tag == "Enemy")
+        if (collision.transform.tag == "Enemy")
         {
             switch (state)
             {
                 case State.Normal:
                     {
-                        alreadyIncludedCollision = true;
-                        totalCollisionTime += Time.deltaTime;
-                        cameraShake.shakeDuration = 0.1f;
-                        cameraShake.shakeAmount = totalCollisionTime;
-                        if (totalCollisionTime >= TotalCollisionTimeThreshold)
+                        if (alreadyIncludedCollision == false)
                         {
-                            Die(collision.transform.position - transform.position);
-                            cameraShake.shakeDuration = 0;
+                            collisionFreeTime = 0;
+                            alreadyIncludedCollision = true;
+                            totalCollisionTime += Time.deltaTime;
+                            cameraShake.shakeDuration = 0.1f;
+                            cameraShake.shakeAmount = totalCollisionTime;
+                            if (totalCollisionTime >= TotalCollisionTimeThreshold)
+                            {
+                                Die(collision.transform.position - transform.position);
+                                cameraShake.shakeDuration = 0;
+                            }
                         }
                         break;
                     }
@@ -255,6 +262,14 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if(alreadyIncludedCollision)
+        {
+            collisionFreeTime += Time.deltaTime;
+            if (collisionFreeTime >= CollisionFreeTimeThreshold)
+            {
+                totalCollisionTime = 0;
+            }
+        }
         alreadyIncludedCollision = false;
     }
 }
