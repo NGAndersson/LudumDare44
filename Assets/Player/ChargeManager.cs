@@ -33,15 +33,15 @@ public class ChargeManager : MonoBehaviour
             innerCircle.GetComponent<Image>().color = new Color(255, 255, 0, 135); // Yellow.
             glowingCircle = true;
         }
-
+        
         // Check for inputs.
-        if (!doingAction && chargePercentage == 1 && player.state == PlayerController.State.Normal && Input.GetMouseButtonDown(0))
+        if (!doingAction && chargePercentage == 1 && player.state == PlayerController.State.Normal/* && Input.GetMouseButtonDown(0)*/)
         {
             Ray r = player.Camera.ScreenPointToRay(Input.mousePosition);
             player.PositionPlane.Raycast(r, out float distanceToPoint);
             float distanceFromPlayer = (r.GetPoint(distanceToPoint) - transform.position).magnitude;
 
-            if (distanceFromPlayer < outerCircle.GetComponent<RectTransform>().rect.width/2)
+            //if (distanceFromPlayer < outerCircle.GetComponent<RectTransform>().rect.width/2)
             {
                 // Player started touch within the outer circle.
                 doingAction = true;
@@ -71,7 +71,7 @@ public class ChargeManager : MonoBehaviour
         private float dashTimer = 0.0f;
         public float dashTimeLimit = 0.4f;
         public float spinWindupTime = 0.1f;
-        public float angleChangePerSecondRequirement = 90f;
+        public float angleChangePerSecondRequirement = 300f;
         public float dashDistanceChangeRequirement = 3f;
         Vector3 prevDirection = Vector3.zero;
         float prevDistance = 0;
