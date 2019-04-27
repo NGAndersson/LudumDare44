@@ -35,7 +35,6 @@ public class EnemyWaves : MonoBehaviour
             forcedNextWave = false;
             return true;
         }
-        return false; // TODO always false, fix later
 
         if(currentEnemyWave != null && currentEnemyWave.GetAliveEnemies() == 0)
         {
@@ -59,6 +58,7 @@ public class EnemyWaves : MonoBehaviour
 
     void NextWave()
     {
+        Destroy(currentEnemyWave);
         currentEnemyWave = BuildNextWave(enemyWaveCounter);
         ++enemyWaveCounter;
     }
@@ -67,25 +67,9 @@ public class EnemyWaves : MonoBehaviour
     private EnemyWave BuildNextWave(int enemyWaveCounter)
     {
         EnemyWave enemyWave = Instantiate(enemyWavePrefab);
-        // TODO fins spawn position for enememies
-        if(enemyWaveCounter == 1)
+        for(int i = 0; i < 4; ++i)
         {
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(0)));
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(1)));
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(2)));
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(3)));
-        }
-        else if(enemyWaveCounter == 2)
-        {
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(0)));
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(1)));
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(2)));
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(3)));
-        }
-        else
-        {
-            // TODO This is just examples
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 15 * enemyWaveCounter/3, enemySpawnerController.GetEnemmySpawner(3)));
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3 * enemyWaveCounter, enemySpawnerController.GetEnemmySpawner(i)));
         }
         return enemyWave;
     }
