@@ -50,6 +50,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    bool alreadyIncludedCollision = false;
+    const float TotalCollisionTimeThreshold = 0.7f;
+    float totalCollisionTime = 0f;
+
     public enum State
     {
         Normal,
@@ -59,6 +63,8 @@ public class PlayerController : MonoBehaviour
 
     Vector3 originPosition;
     Quaternion originRotation;
+    new Camera camera;
+    CameraShake cameraShake;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +75,8 @@ public class PlayerController : MonoBehaviour
 
         rbody = GetComponent<Rigidbody>();
         moveSpeed = minSpeed;
+        camera = Camera.main;
+        cameraShake = camera.GetComponent<CameraShake>();
     }
 
     // Update is called once per frame
@@ -196,6 +204,7 @@ public class PlayerController : MonoBehaviour
         //acceleration = 1.0f;
         //deacceleration = -2.0f;
         actualDirection = new Vector3(1f, 0f, 0f);
+        totalCollisionTime = 0;
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -204,9 +213,34 @@ public class PlayerController : MonoBehaviour
         {
             switch (state)
             {
+                case State.Spinning:
+                    {
+                        collision.gameObject.GetComponent<Enemy>().Die(transform.position - collision.transform.position);
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (alreadyIncludedCollision == false && collision.transform.tag == "Enemy")
+        {
+            switch (state)
+            {
                 case State.Normal:
                     {
-                        Die(collision.transform.position - transform.position);
+                        alreadyIncludedCollision = true;
+                        totalCollisionTime += Time.deltaTime;
+                        cameraShake.shakeDuration = 0.1f;
+                        cameraShake.shakeAmount = totalCollisionTime;
+                        if (totalCollisionTime >= TotalCollisionTimeThreshold)
+                        {
+                            Die(collision.transform.position - transform.position);
+                            cameraShake.shakeDuration = 0;
+                        }
                         break;
                     }
                 case State.Spinning:
@@ -214,7 +248,13 @@ public class PlayerController : MonoBehaviour
                         collision.gameObject.GetComponent<Enemy>().Die(transform.position - collision.transform.position);
                         break;
                     }
+                default: break;
             }
         }
+    }
+
+    private void LateUpdate()
+    {
+        alreadyIncludedCollision = false;
     }
 }
