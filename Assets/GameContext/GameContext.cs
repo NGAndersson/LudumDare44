@@ -20,10 +20,19 @@ public class GameContext : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void OnEnable()
     {
         menuEvents = Utilities.Scene.findExactlyOne<MenuEvents>();
         playerController = Utilities.Scene.findExactlyOne<PlayerController>();
+    }
+
+    private void Start()
+    {
+        if (Application.isEditor)
+        {
+            TogglePause();
+            StartNewGame();
+        }
     }
 
     public void TogglePause()

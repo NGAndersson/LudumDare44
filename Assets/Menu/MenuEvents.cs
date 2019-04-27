@@ -7,9 +7,17 @@ public class MenuEvents : MonoBehaviour
 {
     GameContext gameContext;
 
-    void Start()
+    void OnEnable()
     {
         gameContext = Utilities.Scene.findExactlyOne<GameContext>();
+    }
+
+    private void Start()
+    {
+        if (Application.isEditor)
+        {
+            transform.parent.gameObject.SetActive(false);
+        }
     }
 
     public void EventPlay()
