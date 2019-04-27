@@ -7,23 +7,22 @@ public class MenuEvents : MonoBehaviour
 {
     GameContext gameContext;
 
-    void OnEnable()
+    void Start()
     {
         gameContext = Utilities.Scene.findExactlyOne<GameContext>();
+        StartCoroutine("DelayedStart");
     }
 
-    private void Start()
+    private IEnumerator DelayedStart()
     {
-        if (Application.isEditor)
-        {
-            transform.parent.gameObject.SetActive(false);
-        }
+        yield return new WaitForSeconds(0.1f);
+        transform.parent.gameObject.SetActive(false);
     }
 
     public void EventPlay()
     {
-        gameContext.StartNewGame();
         EventToggleMenu();
+        gameContext.StartNewGameDelayed();
     }
 
     public void EventOptions()

@@ -13,20 +13,28 @@ public class EnemyWaves : MonoBehaviour
     int enemyWaveCounter = 1;
     EnemyWave currentEnemyWave;
     PlayerController playerController;
+    EnemySpawnerController enemySpawnerController;
+    bool forcedNextWave = false;
 
     public void Reset()
     {
         enemyWaveCounter = 1;
     }
 
-    private void OnEnable()
+    private void Start()
     {
         playerController = Utilities.Scene.findExactlyOne<PlayerController>();
+        enemySpawnerController = Utilities.Scene.findExactlyOne<EnemySpawnerController>();
     }
 
     private bool TimeForNextWave()
     {
-        return false;
+        if (forcedNextWave) {
+            forcedNextWave = false;
+            return true;
+        }
+        return false; // TODO always false, fix later
+
         if(currentEnemyWave != null && currentEnemyWave.GetAliveEnemies() == 0)
         {
             return true;
@@ -44,7 +52,7 @@ public class EnemyWaves : MonoBehaviour
 
     public void ForceNextWave()
     {
-        NextWave();
+        forcedNextWave = true;
     }
 
     void NextWave()
@@ -61,27 +69,25 @@ public class EnemyWaves : MonoBehaviour
         // TODO fins spawn position for enememies
         if(enemyWaveCounter == 1)
         {
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 10, playerController));
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, playerController, enemySpawnerController.GetEnemmySpawner(0)));
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, playerController, enemySpawnerController.GetEnemmySpawner(1)));
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, playerController, enemySpawnerController.GetEnemmySpawner(2)));
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, playerController, enemySpawnerController.GetEnemmySpawner(3)));
         }
         else
         {
             // TODO This is just examples
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, (10 * enemyWaveCounter / 2), playerController));
-           // enemyWave.enemeies.Add(BuildEnemyList(enemyTypeTwo, 10));
-           // enemyWave.enemeies.Add(BuildEnemyList(enemyTypeThree, 10));
-
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 15 * enemyWaveCounter/3, playerController, enemySpawnerController.GetEnemmySpawner(3)));
         }
         return enemyWave;
     }
 
-    private List<GameObject> BuildEnemyList(GameObject enemyPrefab, int amount, PlayerController playerController)
+    private List<GameObject> BuildEnemyList(GameObject enemyPrefab, int amount, PlayerController playerController, EnemySpawner enemySpawner)
     {
         List<GameObject> enemyList = new List<GameObject>();
         for(int i = 0; i < amount; ++i)
         {
-           GameObject enemyObject = Instantiate(enemyPrefab, Vector3.zero, Quaternion.identity);
-           Enemy enemy = enemyObject.GetComponent<Enemy>();
-           enemy.Initialize(playerController, playerController.GetComponentInParent<Rigidbody>());
+           enemySpawner.QueueEnemy(enemyPrefab, playerController, enemySpawner);
         }
         return enemyList;
     }
