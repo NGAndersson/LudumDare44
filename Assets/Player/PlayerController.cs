@@ -18,6 +18,13 @@ public class PlayerController : MonoBehaviour
     public Transform visuals;
 
     private Plane positionPlane = new Plane();
+    public Plane PositionPlane
+    {
+        get
+        {
+            return positionPlane;
+        }
+    }
 
     private Vector3 aimVector;
 
@@ -30,6 +37,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Camera playerCamera = null;
+
+    public Camera Camera
+    {
+        get
+        {
+            return playerCamera;
+        }
+    }
 
     public enum State
     {
@@ -82,8 +97,6 @@ public class PlayerController : MonoBehaviour
             case State.Normal:
                 {
                     moveSpeed = Mathf.Min(moveSpeed + acceleration * Time.deltaTime, maxSpeed);
-                    if (moveSpeed >= maxSpeed)
-                        SetState(State.Spinning);
                     break;
                 }
             case State.Spinning:
@@ -96,7 +109,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SetState(State newState)
+    public void SetState(State newState)
     {
         switch (newState)
         {
