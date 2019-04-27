@@ -46,7 +46,7 @@ public abstract class Enemy : MonoBehaviour
         // TODO rotate towards player
     }
 
-    public abstract void Die();
+    public abstract void Die(Vector3 deathVector);
 
     public void SetTarget(Transform newTarget)
     {

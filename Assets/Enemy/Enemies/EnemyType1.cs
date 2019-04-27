@@ -6,7 +6,7 @@ public class EnemyType1 : Enemy
 {
     public override int PointValue => 1;
 
-    public override void Die()
+    public override void Die(Vector3 deathVector)
     {
         Utilities.Scene.findExactlyOne<ScoreManager>().AddScore(PointValue);
         Destroy(gameObject);

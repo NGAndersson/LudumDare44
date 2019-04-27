@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Die()
+    private void Die(Vector3 deathVector)
     {
 
     }
@@ -175,12 +175,12 @@ public class PlayerController : MonoBehaviour
             {
                 case State.Normal:
                     {
-                        Die();
+                        Die(collision.transform.position - transform.position);
                         break;
                     }
                 case State.Spinning:
                     {
-                        collision.gameObject.GetComponent<Enemy>().Die();
+                        collision.gameObject.GetComponent<Enemy>().Die(transform.position - collision.transform.position);
                         break;
                     }
             }
