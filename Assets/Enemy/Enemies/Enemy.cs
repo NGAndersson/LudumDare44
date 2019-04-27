@@ -43,7 +43,8 @@ public abstract class Enemy : MonoBehaviour
         direction = direction.ResetY();
         direction.Normalize();
         rigidbody.AddForce(direction * speed * Time.deltaTime);
-        // TODO rotate towards player
+        
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(rigidbody.velocity.normalized), Time.deltaTime * 5f);
     }
 
     public abstract void Die();
