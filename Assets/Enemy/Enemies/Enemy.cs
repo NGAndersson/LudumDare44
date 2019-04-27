@@ -9,22 +9,20 @@ public abstract class Enemy : MonoBehaviour
     public SpawnEffect spawnEffect;
 
     new Rigidbody rigidbody;
-    PlayerController targetPlayer;
     Rigidbody targetPlayerRigidbody;
     Transform currentTarget;
     BoxCollider boxCollider;
+    Transform target = null;
 
-    const float MaxSpeed = 500f;
-    const float MinSpeed = 1000f;
+    const float InitialSpeed = 5f;
+    const float MaxSpeed = 400f;
+    const float MinSpeed = 800f;
     float speed = MinSpeed;
 
     public abstract int PointValue { get; }
 
-    public void Initialize(PlayerController playerController, Rigidbody playerRigidbody)
+    public void Initialize()
     {
-        targetPlayer = playerController;
-        targetPlayerRigidbody = playerRigidbody;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetPlayerRigidbody.rotation, 1.0f);
     }
 
     void Start()
@@ -33,7 +31,6 @@ public abstract class Enemy : MonoBehaviour
         rigidbody = GetComponentInParent<Rigidbody>();
         boxCollider = GetComponentInParent<BoxCollider>();
         Assert.IsNotNull(rigidbody);
-        rigidbody.useGravity = false;
         IgnoreCollisions(true);
     }
 
@@ -61,21 +58,24 @@ public abstract class Enemy : MonoBehaviour
 
     public void ReleaseFromSpawner()
     {
+        if(target == null)
+        {
+            target = GameObject.FindWithTag("Player").GetComponentInChildren<PlayerController>().transform;
+        }
+        SetTarget(target);
         IgnoreCollisions(false);
-        SetTarget(targetPlayerRigidbody.transform);
-        rigidbody.useGravity = true;
     }
 
     void IgnoreCollisions(bool ignore)
     {
         boxCollider.enabled = !ignore;
+        rigidbody.useGravity = !ignore;
     }
 
     public virtual void DeathEffect(Vector3 direction)
     {
         GameObject go = Instantiate(spawnEffect.gameObject);
         go.transform.position = transform.position;
-
         go.GetComponent<SpawnEffect>().Spawn(direction.normalized, 10);
     }
 }
