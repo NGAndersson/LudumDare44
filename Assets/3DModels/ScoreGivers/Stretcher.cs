@@ -11,7 +11,7 @@ public class Stretcher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(this.transform.position, player.position) < 10f)
+        if (Vector3.Distance(this.transform.position, player.position) < 5f)
         {
             animController.SetBool("Stretch", true);
         }

@@ -39,14 +39,14 @@ public abstract class Enemy : MonoBehaviour
 
         float randomSize = UnityEngine.Random.Range(0.8f, 1.2f);
         transform.localScale = new Vector3(randomSize, randomSize, randomSize);
-        maxVelocity = UnityEngine.Random.Range(maxVelocityRange.x, maxVelocityRange.x + 2);
+        maxVelocity = UnityEngine.Random.Range(maxVelocityRange.x, maxVelocityRange.x + 3);
     }
 
     void Update()
     {
         if (increaseVelTimer < Time.time && maxVelocity < maxVelocityRange.y)
         {
-            increaseVelTimer += 6f;
+            increaseVelTimer = 6f + Time.time;
             maxVelocity++;
         }
 
