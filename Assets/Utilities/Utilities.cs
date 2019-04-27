@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Utilities : MonoBehaviour
+public class Utilities
 {
     public class Scene
     {
         static public T findExactlyOne<T>() where T : UnityEngine.Object
         {
-            T[] objects = FindObjectsOfType<T>();
-            Assert.IsNotNull(objects);
-            Assert.IsTrue(1 == objects.Length);
+            T[] objects = MonoBehaviour.FindObjectsOfType<T>();
+            Assert.AreEqual(1, objects.Length, "There were an unexpected number of " + typeof(T).Name + ". Found: "+ objects.Length);
             return objects[0];
         }
     }

@@ -6,7 +6,7 @@ public class GlobalEvents : MonoBehaviour
 {
     MenuEvents menuEvents;
 
-    void Start()
+    void OnEnable()
     {
         menuEvents = Utilities.Scene.findExactlyOne<MenuEvents>();
     }
