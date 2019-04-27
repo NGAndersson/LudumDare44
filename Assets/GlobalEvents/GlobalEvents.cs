@@ -15,7 +15,7 @@ public class GlobalEvents : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            menuEvents.EventToggleMenu();
+            menuEvents.ToggleMenu();
         }
     }
 }

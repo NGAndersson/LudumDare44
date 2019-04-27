@@ -5,24 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class MenuEvents : MonoBehaviour
 {
+    public UnityEngine.UI.Text topText;
+
     GameContext gameContext;
 
     void Start()
     {
         gameContext = Utilities.Scene.findExactlyOne<GameContext>();
-        StartCoroutine("DelayedStart");
+        if(Application.isEditor)
+        {
+            StartCoroutine("DelayedStart");
+        }
     }
 
     private IEnumerator DelayedStart()
     {
         yield return new WaitForSeconds(0.1f);
-        transform.parent.gameObject.SetActive(false);
+        EventPlay();
     }
 
     public void EventPlay()
     {
-        EventToggleMenu();
-        gameContext.StartNewGameDelayed();
+        topText.text = "Restart";
+        gameContext.StartNewGame();
     }
 
     public void EventOptions()
@@ -40,9 +45,21 @@ public class MenuEvents : MonoBehaviour
         Application.Quit();
     }
 
-    public void EventToggleMenu()
+    public void ToggleMenuShow()
     {
-        gameContext.TogglePause();
+        gameContext.TogglePause(true);
+        transform.parent.gameObject.SetActive(GameContext.isGamePaused);
+    }
+
+    public void ToggleMenuHide()
+    {
+        gameContext.TogglePause(false);
+        transform.parent.gameObject.SetActive(GameContext.isGamePaused);
+    }
+
+    public void ToggleMenu()
+    {
+        gameContext.TogglePause(!GameContext.isGamePaused);
         transform.parent.gameObject.SetActive(GameContext.isGamePaused);
     }
 }

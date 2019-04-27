@@ -19,6 +19,7 @@ public class EnemyWaves : MonoBehaviour
     public void Reset()
     {
         enemyWaveCounter = 1;
+        Destroy(currentEnemyWave);
     }
 
     private void Start()
@@ -29,7 +30,8 @@ public class EnemyWaves : MonoBehaviour
 
     private bool TimeForNextWave()
     {
-        if (forcedNextWave) {
+        if (forcedNextWave)
+        {
             forcedNextWave = false;
             return true;
         }
@@ -57,7 +59,6 @@ public class EnemyWaves : MonoBehaviour
 
     void NextWave()
     {
-        if (currentEnemyWave) { Destroy(currentEnemyWave); }
         currentEnemyWave = BuildNextWave(enemyWaveCounter);
         ++enemyWaveCounter;
     }
@@ -94,7 +95,7 @@ public class EnemyWaves : MonoBehaviour
         List<GameObject> enemyList = new List<GameObject>();
         for(int i = 0; i < amount; ++i)
         {
-           enemySpawner.QueueEnemy(enemyPrefab, enemySpawner);
+            enemyList.Add(enemySpawner.QueueEnemy(enemyPrefab, enemySpawner));
         }
         return enemyList;
     }

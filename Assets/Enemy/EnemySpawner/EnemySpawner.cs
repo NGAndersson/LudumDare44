@@ -8,7 +8,6 @@ public class EnemySpawner : MonoBehaviour
     public GameObject direction;
 
     List<Enemy> enemyList = new List<Enemy>();
-    Enemy currentEnemy = null;
 
     public GameObject QueueEnemy(GameObject enemyPrefab, EnemySpawner enemySpawner)
     {
@@ -42,5 +41,10 @@ public class EnemySpawner : MonoBehaviour
         Vector3 direction = (origin.transform.position - transform.position).normalized;
         Vector3 spawnPosition = origin.transform.position + (direction * sizeOfEnemy * enemyList.Count);
         return spawnPosition;
+    }
+
+    public void Reset()
+    {
+        enemyList = new List<Enemy>();
     }
 }

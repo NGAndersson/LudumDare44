@@ -18,30 +18,26 @@ public class GameContext : MonoBehaviour
         }
     }
 
-    void Start()
+    public void TogglePause(bool pause = true)
     {
-        if (Application.isEditor)
-        {
-            TogglePause();
-            StartNewGameDelayed();
-        }
-    }
-
-    public void TogglePause()
-    {
-        isGamePaused = !isGamePaused;
+        isGamePaused = pause;
         Time.timeScale = (isGamePaused) ? 0 : 1;
     }
 
-    public void StartNewGameDelayed()
+    public void StartNewGame()
     {
-        StartCoroutine("StartNewGame");
+        StartCoroutine("StartNewGameInternal");
     }
 
-    private IEnumerator StartNewGame()
+    private IEnumerator StartNewGameInternal()
     {
+        TogglePause(false);
+        yield return new WaitForSeconds(0.1f);
+        Utilities.Scene.findExactlyOne<EnemySpawnerController>().Reset();
+        GameObject.FindWithTag("Player").GetComponentInChildren<PlayerController>().Reset();
+        MenuEvents menuEvents = Utilities.Scene.findExactlyOne<MenuEvents>();
+        menuEvents.ToggleMenuHide();
         EnemyWaves enemyWaves = Utilities.Scene.findExactlyOne<EnemyWaves>();
-        yield return new WaitForSeconds(2f);
         enemyWaves.Reset();
         enemyWaves.ForceNextWave();
     }

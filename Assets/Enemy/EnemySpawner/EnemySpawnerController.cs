@@ -17,4 +17,12 @@ public class EnemySpawnerController : MonoBehaviour
     {
         return enemySpawners[index];
     }
+
+    public void Reset()
+    {
+        foreach(EnemySpawner enemySpawner in enemySpawners)
+        {
+            enemySpawner.Reset();
+        }
+    }
 }
