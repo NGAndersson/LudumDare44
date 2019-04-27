@@ -9,7 +9,7 @@ public class GameContext : MonoBehaviour
 
     public List<GameObject> gameGlobalObjects;
     private MenuEvents menuEvents;
-    private PlayerController playerController;
+    private EnemyWaves enemyWaves;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class GameContext : MonoBehaviour
     private void OnEnable()
     {
         menuEvents = Utilities.Scene.findExactlyOne<MenuEvents>();
-        playerController = Utilities.Scene.findExactlyOne<PlayerController>();
+        enemyWaves = Utilities.Scene.findExactlyOne<EnemyWaves>();
     }
 
     private void Start()
@@ -44,5 +44,7 @@ public class GameContext : MonoBehaviour
     public void StartNewGame()
     {
         print("Start new game");
+        enemyWaves.Reset();
+        enemyWaves.ForceNextWave();
     }
 }

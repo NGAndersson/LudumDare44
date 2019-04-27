@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1658140131474108362
+--- !u!1 &312534347645268564
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5928668304474393180}
-  - component: {fileID: 1658140131474108363}
+  - component: {fileID: 1811817502245789478}
+  - component: {fileID: 7874060491267850994}
   m_Layer: 0
-  m_Name: GameContext
+  m_Name: EnemyWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5928668304474393180
+--- !u!4 &1811817502245789478
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658140131474108362}
+  m_GameObject: {fileID: 312534347645268564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.098687, y: 2.7152529, z: 49.765625}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1658140131474108363
+--- !u!114 &7874060491267850994
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1658140131474108362}
+  m_GameObject: {fileID: 312534347645268564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb71d12e044e35c4e9b985288f69c9cd, type: 3}
+  m_Script: {fileID: 11500000, guid: da4db5f941ace5d41b547cefa33f54f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameGlobalObjects:
-  - {fileID: 9018080671620985644, guid: a851813944758a1499d5c3d43449a87a, type: 3}
-  - {fileID: 8915261669682535005, guid: c0ebcec086df3d0418ba0d0683352e09, type: 3}
-  - {fileID: 5593724810787262765, guid: 3737e6e1582c308418382a976edb1d92, type: 3}
