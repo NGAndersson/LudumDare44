@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeed = 0;
+
+    public float maxSpeed = 10;
 
     public State state;
+
+    public float turnSpeed;
+
+    public float acceleration;
+
+    public float deacceleration;
 
     private Plane positionPlane = new Plane();
 
     private Vector3 aimVector;
 
-    private Vector3 actualDirection;
+    private Vector3 actualDirection = new Vector3(1,0,0);
 
     private Rigidbody rbody;
 
@@ -35,16 +43,32 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1") || Input.touches.Length > 0)
-        {
-            rbody.AddForce(transform.forward * 10, ForceMode.Acceleration);
-        }
+        // Set velocity.
+        rbody.velocity = actualDirection * moveSpeed;
 
         positionPlane.SetNormalAndPosition(Vector3.up, transform.position); // Update position plane, normal can be changed in case of slopes in the future.
         Vector3 aimVector = GetAimVector();
-        
+
         if (aimVector != Vector3.zero)
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(aimVector, Vector3.up), 1f);
+        {
+            actualDirection = Vector3.RotateTowards(actualDirection, aimVector, turnSpeed, 0.0f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(actualDirection, Vector3.up), 1f);
+        }
+
+        // Increase or decrease speed.
+        switch (state)
+        {
+            case State.Normal:
+            {
+                moveSpeed = Mathf.Min(moveSpeed + acceleration * Time.deltaTime, maxSpeed);
+                break;
+            }
+            case State.Spinning:
+            {
+                moveSpeed += deacceleration * Time.deltaTime;
+                break;
+            }
+        }
     }
 
     /// <summary>
