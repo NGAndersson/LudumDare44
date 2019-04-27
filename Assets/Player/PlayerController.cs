@@ -63,6 +63,8 @@ public class PlayerController : MonoBehaviour
 
     Vector3 originPosition;
     Quaternion originRotation;
+    new Camera camera;
+    CameraShake cameraShake;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +75,8 @@ public class PlayerController : MonoBehaviour
 
         rbody = GetComponent<Rigidbody>();
         moveSpeed = minSpeed;
+        camera = Camera.main;
+        cameraShake = camera.GetComponent<CameraShake>();
     }
 
     // Update is called once per frame
@@ -229,9 +233,12 @@ public class PlayerController : MonoBehaviour
                     {
                         alreadyIncludedCollision = true;
                         totalCollisionTime += Time.deltaTime;
+                        cameraShake.shakeDuration = 0.1f;
+                        cameraShake.shakeAmount = totalCollisionTime;
                         if (totalCollisionTime >= TotalCollisionTimeThreshold)
                         {
                             Die(collision.transform.position - transform.position);
+                            cameraShake.shakeDuration = 0;
                         }
                         break;
                     }
