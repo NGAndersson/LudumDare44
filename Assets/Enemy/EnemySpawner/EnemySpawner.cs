@@ -33,7 +33,8 @@ public class EnemySpawner : MonoBehaviour
             currentEnemy = queuedEnemeis.Peek();
         }
 
-        if((currentEnemy.transform.position - direction.transform.position).magnitude <= 1f)
+        float distance = (currentEnemy.transform.position - direction.transform.position).magnitude;
+        if (distance <= 2f)
         {
             currentEnemy = queuedEnemeis.Dequeue();
             currentEnemy.ReleaseFromSpawner();

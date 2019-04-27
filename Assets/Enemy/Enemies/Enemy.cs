@@ -11,9 +11,9 @@ public abstract class Enemy : MonoBehaviour
     Rigidbody targetPlayerRigidbody;
     Transform currentTarget;
 
-    float speed = 2f;
-
-    bool isAiEnabled = false;
+    const float MaxSpeed = 500f;
+    const float MinSpeed = 1000f;
+    float speed;
 
     public abstract int PointValue { get; }
 
@@ -22,14 +22,14 @@ public abstract class Enemy : MonoBehaviour
         targetPlayer = playerController;
         targetPlayerRigidbody = playerRigidbody;
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetPlayerRigidbody.rotation, 1.0f);
-        ToggleCollision(false);
+        IgnoreCollisions(true);
+        speed = Random.Range(MinSpeed, MaxSpeed);
     }
 
     void Start()
     {
         rigidbody = GetComponentInParent<Rigidbody>();
         Assert.IsNotNull(rigidbody);
-        rigidbody.useGravity = false;
     }
 
     void Update()
@@ -39,11 +39,11 @@ public abstract class Enemy : MonoBehaviour
 
     void MoveTowardsTarget()
     {
-        // TODO just an example
         Vector3 direction = currentTarget.position - transform.position;
         direction = direction.ResetY();
         direction.Normalize();
-        transform.SetPositionAndRotation(transform.position + (direction * speed * Time.deltaTime), transform.rotation);
+        rigidbody.AddForce(direction * speed * Time.deltaTime);
+        // TODO rotate towards player
     }
 
     public abstract void Die();
@@ -55,15 +55,14 @@ public abstract class Enemy : MonoBehaviour
 
     public void ReleaseFromSpawner()
     {
-        isAiEnabled = true;
-        ToggleCollision(true);
-        rigidbody.useGravity = true;
+        IgnoreCollisions(false);
         SetTarget(targetPlayerRigidbody.transform);
     }
 
-    void ToggleCollision(bool collionEnabled)
+    void IgnoreCollisions(bool ignore)
     {
-        // TODO prefetch the boxcoll
-        gameObject.GetComponent<BoxCollider>().enabled = collionEnabled;
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Rink"), LayerMask.NameToLayer("Enemy"), ignore);
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Enemy"), ignore);
     }
 }
+
