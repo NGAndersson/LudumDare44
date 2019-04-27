@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 0.0f;
     public float maxSpeed = 10.0f;
+    public float minSpeed = 4.0f;
 
     public float turnSpeed = 6.0f;
     public float spinsPerSecond = 3.0f;
@@ -24,9 +25,11 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rbody;
 
+    [SerializeField]
+    private ChargeManager chargeManager = null;
 
     [SerializeField]
-    private Camera playerCamera;
+    private Camera playerCamera = null;
 
     public enum State
     {
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rbody = GetComponent<Rigidbody>();
+        moveSpeed = minSpeed;
     }
 
     // Update is called once per frame
@@ -85,7 +89,7 @@ public class PlayerController : MonoBehaviour
             case State.Spinning:
                 {
                     moveSpeed += deacceleration * Time.deltaTime;
-                    if (moveSpeed <= 2)
+                    if (moveSpeed <= minSpeed)
                         SetState(State.Normal);
                     break;
                 }
@@ -108,6 +112,7 @@ public class PlayerController : MonoBehaviour
             case State.Spinning:
                 {
                     state = State.Spinning;
+                    chargeManager.ActivateSpin();
                     visuals.GetComponent<Animator>().SetTrigger("Spin");
                     turnSpeed = 3.0f;
                     acceleration = 1.0f;
