@@ -16,6 +16,19 @@ public class EnemyWave : MonoBehaviour
     {
     }
 
+    void OnDestroy()
+    {
+        print("OnDestroy: " + GetAliveEnemies());
+        foreach (List<GameObject> enemyList in enemeies)
+        {
+            foreach (GameObject enemy in enemyList)
+            {
+        print("OnDestroy12");
+                Destroy(enemy);
+            }
+        }
+    }
+
     public int GetAliveEnemies()
     {
         int counter = 0;

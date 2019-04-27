@@ -19,6 +19,7 @@ public class EnemyWaves : MonoBehaviour
     public void Reset()
     {
         enemyWaveCounter = 1;
+        Destroy(currentEnemyWave);
     }
 
     private void Start()
@@ -29,7 +30,8 @@ public class EnemyWaves : MonoBehaviour
 
     private bool TimeForNextWave()
     {
-        if (forcedNextWave) {
+        if (forcedNextWave)
+        {
             forcedNextWave = false;
             return true;
         }
@@ -57,7 +59,6 @@ public class EnemyWaves : MonoBehaviour
 
     void NextWave()
     {
-        if (currentEnemyWave) { Destroy(currentEnemyWave); }
         currentEnemyWave = BuildNextWave(enemyWaveCounter);
         ++enemyWaveCounter;
     }
@@ -69,25 +70,32 @@ public class EnemyWaves : MonoBehaviour
         // TODO fins spawn position for enememies
         if(enemyWaveCounter == 1)
         {
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, playerController, enemySpawnerController.GetEnemmySpawner(0)));
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, playerController, enemySpawnerController.GetEnemmySpawner(1)));
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, playerController, enemySpawnerController.GetEnemmySpawner(2)));
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, playerController, enemySpawnerController.GetEnemmySpawner(3)));
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(0)));
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(1)));
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(2)));
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(3)));
+        }
+        else if(enemyWaveCounter == 2)
+        {
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(0)));
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(1)));
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(2)));
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 3, enemySpawnerController.GetEnemmySpawner(3)));
         }
         else
         {
             // TODO This is just examples
-            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 15 * enemyWaveCounter/3, playerController, enemySpawnerController.GetEnemmySpawner(3)));
+            enemyWave.enemeies.Add(BuildEnemyList(enemyTypeOne, 15 * enemyWaveCounter/3, enemySpawnerController.GetEnemmySpawner(3)));
         }
         return enemyWave;
     }
 
-    private List<GameObject> BuildEnemyList(GameObject enemyPrefab, int amount, PlayerController playerController, EnemySpawner enemySpawner)
+    private List<GameObject> BuildEnemyList(GameObject enemyPrefab, int amount, EnemySpawner enemySpawner)
     {
         List<GameObject> enemyList = new List<GameObject>();
         for(int i = 0; i < amount; ++i)
         {
-           enemySpawner.QueueEnemy(enemyPrefab, playerController, enemySpawner);
+            enemyList.Add(enemySpawner.QueueEnemy(enemyPrefab, enemySpawner));
         }
         return enemyList;
     }

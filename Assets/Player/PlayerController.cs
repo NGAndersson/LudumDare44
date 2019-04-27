@@ -53,9 +53,15 @@ public class PlayerController : MonoBehaviour
         Dashing
     }
 
+    Vector3 originPosition;
+    Quaternion originRotation;
+
     // Start is called before the first frame update
     void Start()
     {
+        originPosition = transform.position;
+        originRotation = transform.rotation;
+
         rbody = GetComponent<Rigidbody>();
         moveSpeed = minSpeed;
     }
@@ -165,6 +171,19 @@ public class PlayerController : MonoBehaviour
     private void Die(Vector3 deathVector)
     {
 
+    }
+
+    public void Reset()
+    {
+        transform.position = originPosition;
+        moveSpeed = 0.0f;
+        maxSpeed = 10.0f;
+        minSpeed = 4.0f;
+        turnSpeed = 6.0f;
+        spinsPerSecond = 3.0f;
+        acceleration = 1.0f;
+        deacceleration = -2.0f;
+        actualDirection = new Vector3(1f, 0f, 0f);
     }
 
     private void OnCollisionEnter(Collision collision)
