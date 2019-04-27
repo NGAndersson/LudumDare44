@@ -23,6 +23,7 @@ public class MenuEvents : MonoBehaviour
     public void EventPlay()
     {
         gameContext.StartNewGame();
+        EventToggleMenu();
     }
 
     public void EventOptions()

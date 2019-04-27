@@ -265,6 +265,9 @@ MonoBehaviour:
   outerCircle: {fileID: 1386278373318634739}
   player: {fileID: 7659172941851477205}
   chargePercentage: 0
+  doingAction: 0
+  trailRendererPrefab: {fileID: 3734536374893299794, guid: 4d61a416d7c9fca4ba038211c272c0aa,
+    type: 3}
 --- !u!136 &1079310837
 CapsuleCollider:
   m_ObjectHideFlags: 0

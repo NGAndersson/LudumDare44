@@ -12,6 +12,7 @@ public class ChargeManager : MonoBehaviour
 
     public float chargePercentage = 0f;
     public bool doingAction = false;
+    public GameObject trailRendererPrefab;
 
     private ActionChecker actionChecker = new ActionChecker();
 
@@ -44,7 +45,7 @@ public class ChargeManager : MonoBehaviour
             {
                 // Player started touch within the outer circle.
                 doingAction = true;
-                actionChecker.Reset(player);
+                actionChecker.Reset(player, trailRendererPrefab);
             }
         }
 
@@ -67,16 +68,20 @@ public class ChargeManager : MonoBehaviour
     private class ActionChecker
     {
         private float timer = 0.0f;
-        public float spinWindupTime = 0.2f;
-        public float angleChangePerSecondRequirement = 180f;
+        public float spinWindupTime = 0.1f;
+        public float angleChangePerSecondRequirement = 540f;
         Vector3 prevAngle = Vector3.zero;
 
         private PlayerController player;
+        private GameObject trailRenderer;
 
         public bool Update()
         {
             if (Input.GetMouseButtonUp(0)) // User let go of touch.
+            {
+                trailRenderer.SetActive(false);
                 return false;
+            }
 
             Ray r = player.Camera.ScreenPointToRay(Input.mousePosition);
             player.PositionPlane.Raycast(r, out float distanceToPoint);
@@ -96,17 +101,21 @@ public class ChargeManager : MonoBehaviour
                 if (timer > spinWindupTime)
                 {
                     player.SetState(PlayerController.State.Spinning);
+                    trailRenderer.SetActive(false);
                     return false;
                 }
             }
 
+            trailRenderer.transform.position = r.GetPoint(distanceToPoint-1.0f);
             return true;
         }
 
-        public void Reset(PlayerController player)
+        public void Reset(PlayerController player, GameObject trailRendererPrefab)
         {
             this.player = player;
             timer = 0.0f;
+            trailRenderer = Instantiate(trailRendererPrefab);
+            trailRenderer.SetActive(true);
         }
     }
 }
