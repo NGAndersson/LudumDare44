@@ -6,14 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 0.0f;
     [System.NonSerialized]
-    public float maxSpeed = 45f;
+    public float maxSpeed = 18f;
     [System.NonSerialized]
-    public float minSpeed = 18f;
+    public float minSpeed = 8f;
 
     public float turnSpeed = 6.0f;
     public float spinsPerSecond = 3.0f;
 
-    private float acceleration = 7f;
+    private float acceleration = 2.5f;
     private float deacceleration = -2.0f;
 
     public State state;
@@ -188,8 +188,8 @@ public class PlayerController : MonoBehaviour
     public void Reset()
     {
         transform.position = originPosition;
-        maxSpeed = 10.0f;
-        minSpeed = 4.0f;
+        //maxSpeed = 10.0f;
+        //minSpeed = 4.0f;
         moveSpeed = minSpeed;
         turnSpeed = 6.0f;
         spinsPerSecond = 3.0f;
