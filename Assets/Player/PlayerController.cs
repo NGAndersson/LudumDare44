@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
 
         // Set velocity.
         rbody.velocity = actualDirection * moveSpeed;
+        visuals.GetComponent<Animator>().SetFloat("MovementSpeed", (moveSpeed - minSpeed) / (maxSpeed - minSpeed));
 
         positionPlane.SetNormalAndPosition(Vector3.up, transform.position); // Update position plane, normal can be changed in case of slopes in the future.
         Vector3 aimVector = GetAimVector();
