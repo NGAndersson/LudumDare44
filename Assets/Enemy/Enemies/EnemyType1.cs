@@ -8,7 +8,7 @@ public class EnemyType1 : Enemy
 
     public override void Die(Vector3 deathVector)
     {
-        DeathEffect();
+        DeathEffect(deathVector);
 
         Utilities.Scene.findExactlyOne<ScoreManager>().AddScore(PointValue);
         Destroy(gameObject);

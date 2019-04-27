@@ -69,12 +69,12 @@ public abstract class Enemy : MonoBehaviour
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Enemy"), ignore);
     }
 
-    public virtual void DeathEffect()
+    public virtual void DeathEffect(Vector3 direction)
     {
         GameObject go = Instantiate(spawnEffect.gameObject);
         go.transform.position = transform.position;
 
-        go.GetComponent<SpawnEffect>().Spawn(Vector3.forward, 10);
+        go.GetComponent<SpawnEffect>().Spawn(direction.normalized, 10);
     }
 }
 
