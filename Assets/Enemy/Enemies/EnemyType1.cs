@@ -6,11 +6,16 @@ public class EnemyType1 : Enemy
 {
     public override int PointValue => 1;
 
+    static ScoreManager scoreManager = null;
+
     public override void Die(Vector3 deathVector)
     {
-        DeathEffect(deathVector);
+        if (scoreManager == null)
+        {
+            Utilities.Scene.findExactlyOne<ScoreManager>().AddScore(PointValue);
+        }
 
-        Utilities.Scene.findExactlyOne<ScoreManager>().AddScore(PointValue);
-        Destroy(gameObject);
+        DeathEffect(deathVector);
+        gameObject.SetActive(false);
     }
 }

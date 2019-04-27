@@ -5,14 +5,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 0.0f;
+    [System.NonSerialized]
     public float maxSpeed = 45f;
-    public float minSpeed = 10.0f;
+    [System.NonSerialized]
+    public float minSpeed = 18f;
 
     public float turnSpeed = 6.0f;
     public float spinsPerSecond = 3.0f;
 
-    public float acceleration = 1900f;
-    public float deacceleration = 2.0f;
+    private float acceleration = 7f;
+    private float deacceleration = -2.0f;
 
     public State state;
     public Transform visuals;
@@ -53,9 +55,15 @@ public class PlayerController : MonoBehaviour
         Dashing
     }
 
+    Vector3 originPosition;
+    Quaternion originRotation;
+
     // Start is called before the first frame update
     void Start()
     {
+        originPosition = transform.position;
+        originRotation = transform.rotation;
+
         rbody = GetComponent<Rigidbody>();
         moveSpeed = minSpeed;
     }
@@ -64,6 +72,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (GameContext.isGamePaused) { return; }
+
+        // Spin debug
+        if (Input.GetKeyDown(KeyCode.S))
+            SetState(State.Spinning);
 
         // Set velocity.
         rbody.velocity = actualDirection * moveSpeed;
@@ -168,6 +180,19 @@ public class PlayerController : MonoBehaviour
     private void Die(Vector3 deathVector)
     {
 
+    }
+
+    public void Reset()
+    {
+        transform.position = originPosition;
+        maxSpeed = 10.0f;
+        minSpeed = 4.0f;
+        moveSpeed = minSpeed;
+        turnSpeed = 6.0f;
+        spinsPerSecond = 3.0f;
+        //acceleration = 1.0f;
+        //deacceleration = -2.0f;
+        actualDirection = new Vector3(1f, 0f, 0f);
     }
 
     private void OnTriggerEnter(Collider collision)
