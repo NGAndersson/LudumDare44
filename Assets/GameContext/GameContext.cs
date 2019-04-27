@@ -5,31 +5,35 @@ using UnityEngine.Assertions;
 
 public class GameContext : MonoBehaviour
 {
-    public List<GameObject> gameGlobalObjects;
+    public static bool isGamePaused = true;
 
-    bool gamePaused = false;
+    public List<GameObject> gameGlobalObjects;
+    private MenuEvents menuEvents;
+    private PlayerController playerController;
 
     private void Awake()
     {
-        foreach(GameObject gameObject in gameGlobalObjects)
+        DontDestroyOnLoad(this);
+        foreach (GameObject gameObject in gameGlobalObjects)
         {
-            Instantiate(gameObject);
+            DontDestroyOnLoad(Instantiate(gameObject));
         }
     }
 
-    void togglePause()
+    private void Start()
     {
-        gamePaused = !gamePaused;
-        Time.timeScale = (gamePaused) ? 0 : 1;
+        menuEvents = Utilities.Scene.findExactlyOne<MenuEvents>();
+        playerController = Utilities.Scene.findExactlyOne<PlayerController>();
     }
 
-    public void toggleMenu()
+    public void TogglePause()
     {
-        togglePause();
+        isGamePaused = !isGamePaused;
+        Time.timeScale = (isGamePaused) ? 0 : 1;
     }
 
-    public void startNewGame()
+    public void StartNewGame()
     {
-
+        print("Start new game");
     }
 }

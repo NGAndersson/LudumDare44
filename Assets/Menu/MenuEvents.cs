@@ -12,17 +12,9 @@ public class MenuEvents : MonoBehaviour
         gameContext = Utilities.Scene.findExactlyOne<GameContext>();
     }
 
-    public void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.Escape))
-        {
-            gameContext.toggleMenu();
-        }
-    }
-
     public void EventPlay()
     {
-        gameContext.startNewGame();
+        gameContext.StartNewGame();
     }
 
     public void EventOptions()
@@ -30,8 +22,19 @@ public class MenuEvents : MonoBehaviour
         print("Options code goes here.");
     }
 
+    public void EventCredits()
+    {
+        print("Credits.");
+    }
+
     public void EventQuit()
     {
         Application.Quit();
+    }
+
+    public void EventToggleMenu()
+    {
+        gameContext.TogglePause();
+        transform.parent.gameObject.SetActive(GameContext.isGamePaused);
     }
 }
