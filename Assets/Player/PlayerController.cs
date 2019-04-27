@@ -176,9 +176,9 @@ public class PlayerController : MonoBehaviour
     public void Reset()
     {
         transform.position = originPosition;
-        moveSpeed = 0.0f;
         maxSpeed = 10.0f;
         minSpeed = 4.0f;
+        moveSpeed = minSpeed;
         turnSpeed = 6.0f;
         spinsPerSecond = 3.0f;
         acceleration = 1.0f;
