@@ -12,6 +12,7 @@ public abstract class Enemy : MonoBehaviour
     PlayerController targetPlayer;
     Rigidbody targetPlayerRigidbody;
     Transform currentTarget;
+    BoxCollider boxCollider;
 
     const float MaxSpeed = 500f;
     const float MinSpeed = 1000f;
@@ -24,14 +25,16 @@ public abstract class Enemy : MonoBehaviour
         targetPlayer = playerController;
         targetPlayerRigidbody = playerRigidbody;
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetPlayerRigidbody.rotation, 1.0f);
-        IgnoreCollisions(true);
     }
 
     void Start()
     {
         speed = UnityEngine.Random.Range(MinSpeed, MaxSpeed);
         rigidbody = GetComponentInParent<Rigidbody>();
+        boxCollider = GetComponentInParent<BoxCollider>();
         Assert.IsNotNull(rigidbody);
+        rigidbody.useGravity = false;
+        IgnoreCollisions(true);
     }
 
     void Update()
@@ -60,13 +63,12 @@ public abstract class Enemy : MonoBehaviour
     {
         IgnoreCollisions(false);
         SetTarget(targetPlayerRigidbody.transform);
+        rigidbody.useGravity = true;
     }
 
     void IgnoreCollisions(bool ignore)
     {
-        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Rink"), LayerMask.NameToLayer("Enemy"), ignore);
-        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Rink"), ignore);
-        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Enemy"), ignore);
+        boxCollider.enabled = !ignore;
     }
 
     public virtual void DeathEffect(Vector3 direction)
