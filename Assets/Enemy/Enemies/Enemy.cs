@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     new Rigidbody rigidbody;
     PlayerController targetPlayer;
@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     float speed = 2f;
 
     bool isAiEnabled = false;
+
+    public abstract int PointValue { get; }
 
     public void Initialize(PlayerController playerController, Rigidbody playerRigidbody)
     {
@@ -44,10 +46,7 @@ public class Enemy : MonoBehaviour
         transform.SetPositionAndRotation(transform.position + (direction * speed * Time.deltaTime), transform.rotation);
     }
 
-    public void Die()
-    {
-        Destroy(gameObject);
-    }
+    public abstract void Die();
 
     public void SetTarget(Transform newTarget)
     {
