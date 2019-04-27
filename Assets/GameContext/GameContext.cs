@@ -8,6 +8,7 @@ public class GameContext : MonoBehaviour
     public static bool isGamePaused = true;
 
     public List<GameObject> gameGlobalObjects;
+    MenuEvents menuEvents;
 
     void Awake()
     {
@@ -16,6 +17,11 @@ public class GameContext : MonoBehaviour
         {
             DontDestroyOnLoad(Instantiate(gameObject));
         }
+    }
+
+    void Start()
+    {
+        menuEvents = Utilities.Scene.findExactlyOne<MenuEvents>();
     }
 
     public void TogglePause(bool pause = true)
@@ -35,7 +41,6 @@ public class GameContext : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Utilities.Scene.findExactlyOne<EnemySpawnerController>().Reset();
         GameObject.FindWithTag("Player").GetComponentInChildren<PlayerController>().Reset();
-        MenuEvents menuEvents = Utilities.Scene.findExactlyOne<MenuEvents>();
         menuEvents.ToggleMenuHide();
         EnemyWaves enemyWaves = Utilities.Scene.findExactlyOne<EnemyWaves>();
         enemyWaves.Reset();
