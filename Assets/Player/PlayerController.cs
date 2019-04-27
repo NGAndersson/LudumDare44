@@ -50,6 +50,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    bool alreadyIncludedCollision = false;
+    const float TotalCollisionTimeThreshold = 0.7f;
+    float totalCollisionTime = 0f;
+
     public enum State
     {
         Normal,
@@ -204,9 +208,31 @@ public class PlayerController : MonoBehaviour
         {
             switch (state)
             {
+                case State.Spinning:
+                    {
+                        collision.gameObject.GetComponent<Enemy>().Die(transform.position - collision.transform.position);
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (alreadyIncludedCollision == false && collision.transform.tag == "Enemy")
+        {
+            switch (state)
+            {
                 case State.Normal:
                     {
-                        Die(collision.transform.position - transform.position);
+                        alreadyIncludedCollision = true;
+                        totalCollisionTime += Time.deltaTime;
+                        if (totalCollisionTime >= TotalCollisionTimeThreshold)
+                        {
+                            Die(collision.transform.position - transform.position);
+                        }
                         break;
                     }
                 case State.Spinning:
@@ -214,7 +240,13 @@ public class PlayerController : MonoBehaviour
                         collision.gameObject.GetComponent<Enemy>().Die(transform.position - collision.transform.position);
                         break;
                     }
+                default: break;
             }
         }
+    }
+
+    private void LateUpdate()
+    {
+        alreadyIncludedCollision = false;
     }
 }
