@@ -14,6 +14,8 @@ public class Samboni : MonoBehaviour
     void Start()
     {
         startYPos = this.transform.position.y;
+
+        StartCoroutine(ChangeDirectionOnTime());
     }
 
     // Update is called once per frame
@@ -24,19 +26,38 @@ public class Samboni : MonoBehaviour
         //this.transform.Translate(-this.transform.right * Time.deltaTime * 4f);
     }
 
+    //IEnumerator Bounce()
+    //{
+
+    //}
+
+    private IEnumerator ChangeDirectionOnTime()
+    {
+        while(this != null)
+        {
+            NewDir();
+
+            yield return new WaitForSeconds(6);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Rink")
         {
-            //Vector3 dir = checkPoints[currIndex].position;
-            this.transform.LookAt(checkPoints[currIndex].position);
+            NewDir();
+        }
+    }
 
-            currIndex++;
+    private void NewDir()
+    {
+        this.transform.LookAt(checkPoints[currIndex].position);
 
-            if (currIndex >= checkPoints.Length)
-            {
-                currIndex = 0;
-            }
+        currIndex++;
+
+        if (currIndex >= checkPoints.Length)
+        {
+            currIndex = 0;
         }
     }
 }
