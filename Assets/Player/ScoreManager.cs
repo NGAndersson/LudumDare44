@@ -19,4 +19,10 @@ public class ScoreManager : MonoBehaviour
         score += addition;
         scoreText.text = "Score: " + score.ToString();
     }
+
+    public void Reset()
+    {
+        score = 0;
+        scoreText.text = "Score: " + score.ToString();
+    }
 }
