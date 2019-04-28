@@ -71,7 +71,11 @@ public class ChargeManager : MonoBehaviour
         private float dashTimer = 0.0f;
         public float dashTimeLimit = 0.4f;
         public float spinWindupTime = 0.1f;
+#if UNITY_EDITOR
         public float angleChangePerSecondRequirement = 300f;
+#else
+        public float angleChangePerSecondRequirement = 560f;
+#endif
         public float dashDistanceChangeRequirement = 3f;
         Vector3 prevDirection = Vector3.zero;
         float prevDistance = 0;
