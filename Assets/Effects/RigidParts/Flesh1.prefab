@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -5633189941694529662}
   m_Layer: 11
   m_Name: Flesh1
-  m_TagString: Rink
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

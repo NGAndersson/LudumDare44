@@ -21,6 +21,11 @@ public class Samboni : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameContext.isGamePaused)
+        {
+            return;
+        }
+
         this.GetComponent<Rigidbody>().velocity = this.transform.forward * 10;
         this.transform.position = new Vector3(this.transform.position.x, startYPos, this.transform.position.z);
         //this.transform.Translate(-this.transform.right * Time.deltaTime * 4f);
