@@ -120,6 +120,41 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &118794423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 118794424}
+  m_Layer: 0
+  m_Name: ZamboniHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &118794424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118794423}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.955952, y: 2.9, z: 2.1555748}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 259434076}
+  - {fileID: 253981221}
+  - {fileID: 939477799}
+  - {fileID: 944749100}
+  - {fileID: 832579053}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &171796437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -291,6 +326,116 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &253981220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 253981221}
+  m_Layer: 0
+  m_Name: CheckPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &253981221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253981220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.71, y: 0, z: 5.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 118794424}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &259434073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 259434076}
+  - component: {fileID: 259434075}
+  - component: {fileID: 259434074}
+  - component: {fileID: 259434077}
+  m_Layer: 10
+  m_Name: Zamboni
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &259434074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259434073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa90da95bf1519438cca19c98b17973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkPoints:
+  - {fileID: 253981221}
+  - {fileID: 939477799}
+  - {fileID: 944749100}
+  - {fileID: 832579053}
+--- !u!65 &259434075
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259434073}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.86}
+  m_Center: {x: 0, y: -0.24, z: 0}
+--- !u!4 &259434076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259434073}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -7.89, y: 0.77, z: 1.07}
+  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_Children:
+  - {fileID: 709228241}
+  m_Father: {fileID: 118794424}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!54 &259434077
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259434073}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!114 &265047958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,7 +512,7 @@ Light:
   serializedVersion: 9
   m_Type: 1
   m_Color: {r: 1, g: 0.49574798, b: 0, a: 1}
-  m_Intensity: 0.46
+  m_Intensity: 0.74
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -430,6 +575,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 72.256004, y: 41.011, z: 62.514004}
+--- !u!1 &709228240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 709228241}
+  m_Layer: 10
+  m_Name: Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &709228241
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709228240}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.81, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 592038000595883307}
+  m_Father: {fileID: 259434076}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &832579052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 832579053}
+  m_Layer: 0
+  m_Name: CheckPoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &832579053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832579052}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 29.5, y: 0, z: -15.29}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 118794424}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &902955525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -515,6 +721,66 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 902955525}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &939477798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 939477799}
+  m_Layer: 0
+  m_Name: CheckPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &939477799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939477798}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.709999, y: 0, z: -15.29}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 118794424}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &944749099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 944749100}
+  m_Layer: 0
+  m_Name: CheckPoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &944749100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944749099}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 29.5, y: 0, z: 5.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 118794424}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1170392542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1050,7 +1316,7 @@ GameObject:
   - component: {fileID: 568318173103810498}
   m_Layer: 10
   m_Name: pCube35
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1096,13 +1362,27 @@ GameObject:
   - component: {fileID: 2339351352348830946}
   - component: {fileID: 1068721599111209140}
   - component: {fileID: 7594596752008413861}
+  - component: {fileID: 365140122701952033}
   m_Layer: 10
   m_Name: pPlane2
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!65 &365140122701952033
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365140122701952032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 0, z: 1.0014232}
+  m_Center: {x: 0, y: 0, z: -0.00071161985}
 --- !u!1 &413563915422046713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1426,7 @@ GameObject:
   - component: {fileID: 3563036428614686968}
   m_Layer: 10
   m_Name: HockeyLevel
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1202,6 +1482,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!4 &592038000595883307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4497986295445464888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10.000015, y: 10, z: 10.000015}
+  m_Children: []
+  m_Father: {fileID: 709228241}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &669751777083067795
 Transform:
   m_ObjectHideFlags: 0
@@ -1231,7 +1525,7 @@ GameObject:
   - component: {fileID: 8329361914061362583}
   m_Layer: 10
   m_Name: pCube31
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1316,7 +1610,7 @@ GameObject:
   - component: {fileID: 704686597732471514}
   m_Layer: 10
   m_Name: pCube3
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1334,7 +1628,7 @@ GameObject:
   - component: {fileID: 1887712068243923166}
   m_Layer: 10
   m_Name: pCube6
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1539,7 +1833,7 @@ GameObject:
   - component: {fileID: 1064174882601737363}
   m_Layer: 10
   m_Name: Goal1
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1601,7 +1895,7 @@ GameObject:
   - component: {fileID: 1046721668310055072}
   m_Layer: 10
   m_Name: pCube14
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1680,7 +1974,7 @@ GameObject:
   - component: {fileID: 1702981102029554881}
   m_Layer: 10
   m_Name: pCube10
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -1728,7 +2022,7 @@ GameObject:
   - component: {fileID: 2461909916010559280}
   m_Layer: 10
   m_Name: pCube26
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2000,7 +2294,7 @@ GameObject:
   - component: {fileID: 1936385685490638134}
   m_Layer: 10
   m_Name: pCube11
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2024,7 +2318,7 @@ GameObject:
   - component: {fileID: 5084296030930032898}
   m_Layer: 10
   m_Name: Pillar2
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2207,7 +2501,7 @@ GameObject:
   - component: {fileID: 1592364726636952202}
   m_Layer: 10
   m_Name: pCube15
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2435,6 +2729,44 @@ Transform:
   m_Father: {fileID: 3563036428614686968}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &2760944860206207972
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4497986295445464888}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -902609125340544473, guid: 400c66715dadd8240804d6be21194197, type: 3}
+  - {fileID: -6435393767399669465, guid: 400c66715dadd8240804d6be21194197, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!33 &2781609825685179739
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2547,7 +2879,7 @@ GameObject:
   - component: {fileID: 8347103953031711826}
   m_Layer: 10
   m_Name: pCube18
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2650,7 +2982,7 @@ GameObject:
   - component: {fileID: 8161327326815518813}
   m_Layer: 10
   m_Name: pCube21
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2735,7 +3067,7 @@ GameObject:
   - component: {fileID: 5844553733822665195}
   m_Layer: 10
   m_Name: pCube29
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2821,7 +3153,7 @@ GameObject:
   - component: {fileID: 4143494868068007755}
   m_Layer: 10
   m_Name: pCube5
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -2956,7 +3288,7 @@ GameObject:
   - component: {fileID: 2889159942569145663}
   m_Layer: 10
   m_Name: pCube13
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3041,7 +3373,7 @@ GameObject:
   - component: {fileID: 5228185822590451156}
   m_Layer: 10
   m_Name: pCube2
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3074,7 +3406,7 @@ GameObject:
   - component: {fileID: 7849184600094476724}
   m_Layer: 10
   m_Name: pCube7
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3092,7 +3424,7 @@ GameObject:
   - component: {fileID: 4244238393533933680}
   m_Layer: 10
   m_Name: pCube16
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3110,7 +3442,7 @@ GameObject:
   - component: {fileID: 8076034646128157117}
   m_Layer: 10
   m_Name: pCube17
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3343,6 +3675,25 @@ Transform:
   m_Father: {fileID: 5193509624122936654}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4497986295445464888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 592038000595883307}
+  - component: {fileID: 8461227769450458909}
+  - component: {fileID: 2760944860206207972}
+  - component: {fileID: 7403166464759855185}
+  m_Layer: 0
+  m_Name: Zamboni
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4560055883305569586
 Transform:
   m_ObjectHideFlags: 0
@@ -3424,7 +3775,7 @@ GameObject:
   - component: {fileID: 2219440714460710279}
   m_Layer: 10
   m_Name: Pillar
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3546,7 +3897,7 @@ GameObject:
   - component: {fileID: 9071383593503928172}
   m_Layer: 10
   m_Name: pCube34
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3564,7 +3915,7 @@ GameObject:
   - component: {fileID: 7276700580680861778}
   m_Layer: 10
   m_Name: pCube24
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3852,7 +4203,7 @@ GameObject:
   - component: {fileID: 2155259993226473951}
   m_Layer: 10
   m_Name: pCube33
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3884,7 +4235,7 @@ GameObject:
   - component: {fileID: 3299979421244546148}
   m_Layer: 10
   m_Name: pCube32
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -3992,7 +4343,7 @@ GameObject:
   - component: {fileID: 5715296232730578617}
   m_Layer: 10
   m_Name: pCube20
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4137,7 +4488,7 @@ GameObject:
   - component: {fileID: 4123717524801344978}
   m_Layer: 10
   m_Name: pCube19
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4204,7 +4555,7 @@ GameObject:
   - component: {fileID: 6087497283445170630}
   m_Layer: 10
   m_Name: HockeyLevel 1
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4236,7 +4587,7 @@ GameObject:
   - component: {fileID: 6806180741975338076}
   m_Layer: 10
   m_Name: pPlane1
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4401,7 +4752,7 @@ GameObject:
   - component: {fileID: 1030358973451606862}
   m_Layer: 10
   m_Name: pCube30
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4515,7 +4866,7 @@ GameObject:
   - component: {fileID: 4145411707442075925}
   m_Layer: 10
   m_Name: pCube8
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4533,7 +4884,7 @@ GameObject:
   - component: {fileID: 7484526019970440526}
   m_Layer: 10
   m_Name: Pillar3
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4575,7 +4926,7 @@ GameObject:
   - component: {fileID: 3811228310047520537}
   m_Layer: 10
   m_Name: pCube12
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4677,6 +5028,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &7403166464759855185
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4497986295445464888}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 400c66715dadd8240804d6be21194197, type: 3}
+  m_Controller: {fileID: 9100000, guid: 2e085a1e4c4f2fb48bffa024aafe81e6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7416118166048456404
 GameObject:
   m_ObjectHideFlags: 0
@@ -4690,7 +5060,7 @@ GameObject:
   - component: {fileID: 4946638080683993103}
   m_Layer: 10
   m_Name: pCube9
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -4767,7 +5137,7 @@ GameObject:
   - component: {fileID: 5121990486400335307}
   m_Layer: 10
   m_Name: pCube25
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5058,7 +5428,7 @@ GameObject:
   - component: {fileID: 232374345985121972}
   m_Layer: 10
   m_Name: pCube27
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5256,7 +5626,7 @@ GameObject:
   - component: {fileID: 8148074911729412441}
   m_Layer: 10
   m_Name: HockeyLevel1
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5351,7 +5721,7 @@ GameObject:
   - component: {fileID: 669751777083067795}
   m_Layer: 10
   m_Name: HockeyLevel
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5369,7 +5739,7 @@ GameObject:
   - component: {fileID: 6532144312455991387}
   m_Layer: 10
   m_Name: pCube28
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5521,6 +5891,14 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3919494338571900371}
   m_Mesh: {fileID: 8659943070623925175, guid: 20ae8605902a1ec4a81f771036963713, type: 3}
+--- !u!33 &8461227769450458909
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4497986295445464888}
+  m_Mesh: {fileID: -6677038483837291370, guid: 400c66715dadd8240804d6be21194197, type: 3}
 --- !u!4 &8476529706626631613
 Transform:
   m_ObjectHideFlags: 0
@@ -5663,7 +6041,7 @@ GameObject:
   - component: {fileID: 8942835658049334381}
   m_Layer: 10
   m_Name: Goal
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -5716,7 +6094,7 @@ GameObject:
   - component: {fileID: 8640066819971861036}
   m_Layer: 10
   m_Name: Pillar1
-  m_TagString: Untagged
+  m_TagString: Rink
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
