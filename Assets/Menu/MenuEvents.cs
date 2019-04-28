@@ -9,9 +9,14 @@ public class MenuEvents : MonoBehaviour
 
     GameContext gameContext;
 
+    AudioSource crowdSource;
+    public AudioClip crowdClap;
+    public AudioClip crowdCheer;
+
     void Start()
     {
         gameContext = Utilities.Scene.findExactlyOne<GameContext>();
+        crowdSource = GameObject.Find("Audio_Crowd").GetComponent<AudioSource>();
         if(Application.isEditor)
         {
             StartCoroutine("DelayedStart");
@@ -48,12 +53,16 @@ public class MenuEvents : MonoBehaviour
     public void ToggleMenuShow()
     {
         gameContext.TogglePause(true);
+        crowdSource.clip = crowdCheer;
+        crowdSource.Play();
         transform.parent.gameObject.SetActive(GameContext.isGamePaused);
     }
 
     public void ToggleMenuHide()
     {
         gameContext.TogglePause(false);
+        crowdSource.clip = crowdClap;
+        crowdSource.Play();
         transform.parent.gameObject.SetActive(GameContext.isGamePaused);
     }
 
