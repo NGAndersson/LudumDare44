@@ -276,7 +276,7 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(alreadyIncludedCollision)
+        if(!alreadyIncludedCollision)
         {
             collisionFreeTime += Time.deltaTime;
             if (collisionFreeTime >= CollisionFreeTimeThreshold)
