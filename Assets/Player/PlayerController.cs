@@ -214,6 +214,13 @@ public class PlayerController : MonoBehaviour
         collisionFreeTime = 0;
     }
 
+    public void PlayRandomSkateSound()
+    {
+        AudioClip clip = skateSounds[Random.Range(0, skateSounds.Length)];
+
+        AudioSource.PlayClipAtPoint(clip, this.transform.position);
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.transform.tag == "Enemy")
