@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     public State state;
     public Transform visuals;
 
-    public AudioSource cameraAudio;
+    public AudioSource sliceAudioSource;
+    public AudioSource skateAudioSource;
     public AudioClip[] skateSounds;
     public AudioClip[] sliceSounds;
 
@@ -229,8 +230,7 @@ public class PlayerController : MonoBehaviour
             {
                 case State.Spinning:
                     {
-                        cameraAudio.clip = sliceSounds[Random.Range(0, sliceSounds.Length)];
-                        cameraAudio.PlayOneShot(cameraAudio.clip);
+                        sliceAudioSource.PlayOneShot(sliceSounds[Random.Range(0, sliceSounds.Length)]);
                         collision.gameObject.GetComponent<Enemy>().Die(transform.position - collision.transform.position);
                         break;
                     }
@@ -264,9 +264,8 @@ public class PlayerController : MonoBehaviour
                         break;
                     }
                 case State.Spinning:
-                    {   
-                        cameraAudio.clip = sliceSounds[Random.Range(0, sliceSounds.Length)];
-                        cameraAudio.PlayOneShot(cameraAudio.clip);
+                    {
+                        sliceAudioSource.PlayOneShot(sliceSounds[Random.Range(0, sliceSounds.Length)]);
                         collision.gameObject.GetComponent<Enemy>().Die(transform.position - collision.transform.position);
                         break;
                     }
