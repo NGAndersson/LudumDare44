@@ -67,7 +67,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 65
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -78,7 +78,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Credits
+  m_Text: "Credits\nRasmus Tilljander\r\nOscar Andersson\r\nSimon Hylteg\xE5rd\r\nCajsa
+    Larsson (Audio)"
 --- !u!1 &8579743946826884953
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,10 +114,10 @@ RectTransform:
   m_Father: {fileID: 9018080670534950645}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.4}
-  m_AnchorMax: {x: 0.5, y: 0.55}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 150, y: 76}
+  m_SizeDelta: {x: 300, y: 152}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8836022143875218742
 CanvasRenderer:
