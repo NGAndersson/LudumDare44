@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuEvents : MonoBehaviour
 {
-    public UnityEngine.UI.Text topText;
+    public TMPro.TextMeshProUGUI topText;
 
     GameContext gameContext;
 
