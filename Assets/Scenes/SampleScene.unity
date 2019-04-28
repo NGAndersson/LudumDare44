@@ -957,12 +957,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 64.589005, y: -222.32199, z: -121.08501}
---- !u!20 &1307600986 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 7659172942126290207, guid: 65c29d6fae3b69b4890348a6da428d93,
-    type: 3}
-  m_PrefabInstance: {fileID: 7659172940994903365}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1457970331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7659172941851477195, guid: 65c29d6fae3b69b4890348a6da428d93,
@@ -5361,26 +5355,6 @@ PrefabInstance:
     - target: {fileID: 7659172940706390084, guid: 65c29d6fae3b69b4890348a6da428d93,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7659172941851477194, guid: 65c29d6fae3b69b4890348a6da428d93,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 116
-      objectReference: {fileID: 0}
-    - target: {fileID: 7659172941851477205, guid: 65c29d6fae3b69b4890348a6da428d93,
-        type: 3}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 1307600986}
-    - target: {fileID: 7659172942126290195, guid: 65c29d6fae3b69b4890348a6da428d93,
-        type: 3}
-      propertyPath: m_TagString
-      value: MainCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 7423544177717153426, guid: 65c29d6fae3b69b4890348a6da428d93,
-        type: 3}
-      propertyPath: shakeDuration
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
