@@ -373,6 +373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topText: {fileID: 9018080672330954862}
+  crowdClap: {fileID: 8300000, guid: 93ef421ef0017544db9244843a32a4a6, type: 3}
+  crowdCheer: {fileID: 8300000, guid: bb1e6b213db92474990d0de933e78400, type: 3}
 --- !u!1 &9018080670893482522
 GameObject:
   m_ObjectHideFlags: 0
