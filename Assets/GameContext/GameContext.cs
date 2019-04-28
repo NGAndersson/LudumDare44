@@ -43,6 +43,7 @@ public class GameContext : MonoBehaviour
         EnemyWaves enemyWaves = Utilities.Scene.findExactlyOne<EnemyWaves>();
         enemyWaves.Reset();
         enemyWaves.ForceNextWave();
+        Utilities.Scene.findExactlyOne<ScoreManager>().Reset();
         TogglePause(false);
         yield break;
     }
